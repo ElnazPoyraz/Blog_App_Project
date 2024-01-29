@@ -29,7 +29,7 @@ class BlogMVS(ModelViewSet):
             return Blog.objects.all()
 
         if Blog.objects.filter(user=self.request.user.id):
-            return Blog.objects.filter(user=self.request.user.id)
+            return Blog.objects.filter(user=self.request.user.id) | Blog.objects.filter(status='P')
         else:
             return Blog.objects.filter(status='P')
 
